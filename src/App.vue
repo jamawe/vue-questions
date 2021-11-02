@@ -2,11 +2,42 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <template v-if="!authenticated">
+        <router-link to="/signin">Sign in</router-link> |
+      </template>
+      <template v-else>
+        <router-link to="/account">{{ user.name }}</router-link> |
+        <a href="#" @click.prevent="signOut">Sign out</a>
+      </template>
     </div>
     <router-view/>
   </div>
 </template>
+
+<script>
+  import { mapGetters, mapActions } from 'vuex'
+
+  export default {
+    computed: {
+      ...mapGetters({
+        authenticated: 'authenticated',
+        user: 'user',
+      })
+    },
+
+    methods: {
+      ...mapActions({
+        signOutAction: 'signOut'
+      }),
+
+      async signOut () {
+        await this.signOutAction()
+
+        this.$router.replace({ name: 'home' })
+      }
+    }
+  }
+</script>
 
 <style>
 #app {
