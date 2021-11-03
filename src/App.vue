@@ -6,7 +6,7 @@
         <router-link to="/signin">Sign in</router-link> |
       </template>
       <template v-else>
-        <router-link to="/account">{{ user.name }}</router-link> |
+        <router-link to="/account">Hello {{ user.name }}</router-link> |
         <a href="#" @click.prevent="signOut">Sign out</a>
       </template>
     </div>
