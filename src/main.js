@@ -12,8 +12,8 @@ Vue.config.productionTip = false;
 axios.defaults.withCredentials = true;
 axios.defaults.baseURL = 'http://127.0.0.1:8000';
 
-store.dispatch('me')
-  .then(() => {
+// store.dispatch('me')
+//   .then(() => {
 
     new Vue({
       router,
@@ -21,5 +21,5 @@ store.dispatch('me')
       render: h => h(App)
     }).$mount('#app');
     
-  });
+  // });
 

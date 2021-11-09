@@ -10,7 +10,7 @@
     </div>
     <div>
       <button type="submit">
-        Sign in
+        Sign in compo
       </button>
     </div>
   </form>
@@ -18,7 +18,7 @@
 
 <script>
   // import axios from 'axios'
-  // import { mapActions } from 'vuex'
+  import { mapActions } from 'vuex'
 
   export default {
     name: 'SignIn',
@@ -33,9 +33,9 @@
     },
 
     methods: {
-      // ...mapActions({
-      //   signIn: 'signIn'
-      // }),
+      ...mapActions({
+        signIn: 'signIn'
+      }),
 
       async submit() {
         await this.$store.dispatch('signIn', this.form);

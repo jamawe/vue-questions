@@ -1,23 +1,47 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <template v-if="!authenticated">
-        <router-link to="/signin">Sign in</router-link> |
-      </template>
-      <template v-else>
-        <router-link to="/account">Hello {{ user.name }}</router-link> |
-        <a href="#" @click.prevent="signOut">Sign out</a>
-      </template>
+  <main class="h-screen">
+    <div id="app" class="flex flex-col flex-1 h-screen overflow-y-hidden">
+      <Nav />
+      <div class="flex overflow-y-hidden flex-1">
+          <Sidebar />
+        <div class="overflow-x-hidden w-4/5">
+          <router-view></router-view>
+        </div>
+      </div>
+      <!-- <div id="nav">
+        <router-link to="/">Home</router-link> |
+        <template v-if="!authenticated">
+          <router-link to="/signin">Sign in</router-link> |
+        </template>
+        <template v-else>
+          <router-link to="/account">Hello {{ user.name }}</router-link> |
+          <a href="#" @click.prevent="signOut">Sign out</a>
+        </template>
+      </div> -->
+      <!-- <router-view/> -->
+    
     </div>
-    <router-view/>
-  </div>
+  </main>
 </template>
 
 <script>
+  import Nav from './components/Nav.vue';
+  import Sidebar from './components/Sidebar.vue';
+
   import { mapGetters, mapActions } from 'vuex'
 
   export default {
+    name: 'App',
+
+    components: {
+      Nav,
+      Sidebar,
+    },
+
+    created() {
+      this.$store.dispatch('setPageTitle', this.$route.meta.title);
+    },
+
     computed: {
       ...mapGetters({
         authenticated: 'authenticated',
@@ -35,7 +59,14 @@
 
         this.$router.replace({ name: 'home' })
       }
-    }
+    },
+
+    watch: {
+      $route(to) {
+        console.log("2")
+        this.$store.dispatch('setPageTitle', to.meta.title);
+      }
+    },
   }
 </script>
 

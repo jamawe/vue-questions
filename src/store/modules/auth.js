@@ -19,6 +19,7 @@ export default {
   },
 
   actions: {
+    
     async signIn({ dispatch }, credentials) {
       console.log('signIn', credentials.email, credentials.password);
       // Ask client to set CSRF cookie, further requests to the API include that token
@@ -37,10 +38,6 @@ export default {
 
       return dispatch('me');
     },
-
-    // signIn({ dispatch }, credentials) {
-
-    // }
 
     async signOut({ dispatch }) {
       await axios.post('/logout');
