@@ -1,13 +1,17 @@
 <template>
   <main class="h-screen">
     <div id="app" class="flex flex-col flex-1 h-screen overflow-y-hidden">
+
       <Nav />
-      <div class="flex overflow-y-hidden flex-1">
-          <Sidebar />
-        <div class="overflow-x-hidden w-4/5">
-          <router-view></router-view>
+
+      <!-- <div class="flex items-center"> -->
+        <div class="flex overflow-y-hidden flex-1">
+            <Sidebar />
+          <div class="overflow-x-hidden w-4/5">
+            <router-view></router-view>
+          </div>
         </div>
-      </div>
+      <!-- </div> -->
       <!-- <div id="nav">
         <router-link to="/">Home</router-link> |
         <template v-if="!authenticated">
