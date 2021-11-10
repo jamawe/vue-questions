@@ -45,7 +45,7 @@
             </router-link>
             <router-link to="/register">
               <button
-                class="bg-gray-200 h-8 ml-2 px-4 py-1 rounded-full text-sm font-bold">
+                class="bg-gray-200 dark:bg-gray-800 h-8 ml-2 px-4 py-1 rounded-full text-sm font-bold">
                 Sign up
               </button>
             </router-link>
@@ -63,11 +63,22 @@
           </router-link>
           <a href="#" @click.prevent="signOut">Sign out</a>
         </template>
-        <router-link to="/" class="px-6 h-full flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-          </svg>
-        </router-link>
+
+        <!-- <router-link to="/" class="px-6 h-full flex items-center"> -->
+          <span @click="toggleTheme" class="cursor-pointer">
+            <template v-if="theme === 'light'">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+              </svg>
+            </template>
+
+            <template v-else>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+            </template>
+          </span>
+        <!-- </router-link> -->
       </div>
       
       <!-- <template v-if="authenticated">
@@ -100,6 +111,10 @@ export default {
         await this.signOutAction()
 
         this.$router.replace({ name: 'home' })
+      },
+
+      toggleTheme() {
+        this.$store.dispatch('toggleTheme');
       }
   },
 
@@ -108,6 +123,7 @@ export default {
       // authUser: 'authUser',
       authenticated: 'authenticated',
       user: 'user',
+      theme: 'theme',
     })
   }
 }

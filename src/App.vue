@@ -46,10 +46,15 @@
       this.$store.dispatch('setPageTitle', this.$route.meta.title);
     },
 
+    beforeMount() {
+      this.$store.dispatch('initTheme');
+    },
+
     computed: {
       ...mapGetters({
         authenticated: 'authenticated',
         user: 'user',
+        theme: 'theme',
       })
     },
 
@@ -69,7 +74,13 @@
       $route(to) {
         console.log("2")
         this.$store.dispatch('setPageTitle', to.meta.title);
-      }
+      },
+      
+      // eslint-disable-next-line
+      theme(newTheme, oldTheme) {
+        newTheme === 'light' ? document.querySelector('html').classList.remove('dark') : document.querySelector('html').classList.add('dark');
+      },
+      
     },
   }
 </script>
