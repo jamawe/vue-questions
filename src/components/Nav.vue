@@ -37,7 +37,7 @@
       
         <template v-if="!authenticated">
           <div class="flex justify-end">
-            <router-link to="/signin">
+            <router-link to="/login">
               <button
                 class="bg-gray-200 h-8 ml-2 px-4 py-1 rounded-full text-sm font-bold">
                 Login

@@ -4,7 +4,7 @@ import QuestionIndex from './views/Questions/Index.vue';
 import QuestionCreate from './views/Questions/Create.vue';
 import QuestionShow from './views/Questions/Show.vue';
 // import UserShow from './views/Users/Show.vue';
-import SignIn from './views/SignIn.vue';
+import Login from './views/Login.vue';
 
 Vue.use(Router);
 
@@ -13,9 +13,9 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/signin',
-      name: 'signin',
-      component: SignIn
+      path: '/login',
+      name: 'login',
+      component: Login
     },
     
     {
