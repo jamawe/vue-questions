@@ -27,7 +27,7 @@
             
 
           <div>
-            <button @click="submitLogin" class="bg-gray-200 h-8 px-4 py-1 w-full rounded-full text-sm font-bold">
+            <button @click="submitLogin" class="bg-gray-200 h-10 px-4 py-1 w-full rounded-md text-sm font-bold">
               Log In
             </button>
           </div>

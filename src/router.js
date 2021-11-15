@@ -5,6 +5,7 @@ import QuestionCreate from './views/Questions/Create.vue';
 import QuestionShow from './views/Questions/Show.vue';
 // import UserShow from './views/Users/Show.vue';
 import Login from './views/Login.vue';
+import Signup from './views/Signup.vue';
 
 Vue.use(Router);
 
@@ -15,7 +16,15 @@ export default new Router({
     {
       path: '/login',
       name: 'login',
-      component: Login
+      component: Login,
+      meta: { title: 'Log In' },
+    },
+
+    {
+      path: '/signup',
+      name: 'signup',
+      component: Signup,
+      meta: { title: 'Sign Up' },
     },
     
     {
