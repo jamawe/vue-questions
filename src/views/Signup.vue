@@ -60,9 +60,13 @@
                 <span class="flex justify-start text-md">Password</span>
                 <input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm text-sm" type="password" name="password" id="password" v-model="form.password">
               </label>
+              <label for="password-confirm" class="block">
+                <span class="flex justify-start text-md">Confirm Password</span>
+                <input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm text-sm" type="password" name="password-confirm" id="password-confirm" v-model="form.password_confirmation">
+              </label>
               
               <div>
-                <button @click="submitLogin" class="bg-gray-200 h-10 mt-2 px-4 py-1 w-full rounded-md text-sm font-bold">
+                <button @click="submitRegister" class="bg-gray-200 h-10 mt-2 px-4 py-1 w-full rounded-md text-sm font-bold">
                   Sign Up
                 </button>
               </div>
@@ -102,6 +106,8 @@
           name: '',
           email: '',
           password: '',
+
+          password_confirmation: '',
         }
       }
     },
@@ -111,11 +117,11 @@
       //   signIn: 'signIn'
       // }),
 
-      // async submitLogin() {
-      //   await this.$store.dispatch('signIn', this.form);
+      async submitRegister() {
+        await this.$store.dispatch('register', this.form);
 
-      //   this.$router.replace({ name: 'home' });
-      // }
+        this.$router.replace({ name: 'home' });
+      }
     }
   }
 </script>

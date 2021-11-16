@@ -43,7 +43,7 @@
                 Login
               </button>
             </router-link>
-            <router-link to="/register">
+            <router-link to="/signup">
               <button
                 class="bg-gray-200 dark:bg-gray-800 h-8 ml-2 px-4 py-1 rounded-full text-sm font-bold">
                 Sign up

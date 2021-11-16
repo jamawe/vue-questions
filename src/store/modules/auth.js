@@ -19,6 +19,16 @@ export default {
   },
 
   actions: {
+    // eslint-disable-next-line
+    async register({ dispatch }, credentials) {
+      console.log('register', credentials);
+
+      await axios.get('/sanctum/csrf-cookie');
+
+      await axios.post('/register', credentials);
+
+      return dispatch('me');
+    },
     
     async signIn({ dispatch }, credentials) {
       console.log('signIn', credentials.email, credentials.password);
